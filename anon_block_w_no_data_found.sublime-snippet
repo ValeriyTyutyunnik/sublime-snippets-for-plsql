@@ -1,0 +1,20 @@
+<!-- сниппет часто используемого анонимного блока с обработчиком no_data_found -->
+<snippet>
+    <content><![CDATA[
+begin
+  select 1
+    into ${1}
+    from ${2}
+   where ${3} rownum = 1;
+
+exception
+  when no_data_found then
+    ${1} := null;
+end;
+
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>begin</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.plsql</scope>
+</snippet>

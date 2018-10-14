@@ -1,0 +1,28 @@
+<!-- сниппет для создания функции внутри пакета c объявленными отладочными переменными и исключениями -->
+<snippet>
+    <content><![CDATA[
+function ${1}
+return ${2:integer}
+is
+  result ${2:integer};
+  dbg    varchar2(10) := '0';
+  errc   varchar2(4000);
+  err_e  exception;
+begin
+
+  /* write your code here */
+
+  return result;
+exception
+  when err_e then
+    raise_application_error(-20002, ${1}||': dbg='||dbg||' '||err);
+  when others then
+    raise_application_error(-20001, ${1}||': dbg='||dbg||' '||sqlerrm(sqlcode));
+end ${1};
+
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>function</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.plsql</scope>
+</snippet>

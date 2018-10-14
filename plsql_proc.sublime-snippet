@@ -1,0 +1,25 @@
+<!-- сниппет для создания процедуры внутри пакета c объявленными отладочными переменными и исключениями -->
+<snippet>
+    <content><![CDATA[
+procedure ${1}
+is
+  dbg   varchar2(10) := '0';
+  err   varchar2(4000);
+  err_e exception;
+begin
+
+  /* write your code here */
+
+exception
+  when err_e then
+    raise_application_error(-20002, ${1}||': dbg='||dbg||' '||err);
+  when others then
+    raise_application_error(-20001, ${1}||': dbg='||dbg||' '||sqlerrm(sqlcode));
+end ${1};
+
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>procedure</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.plsql</scope>
+</snippet>
