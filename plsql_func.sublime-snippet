@@ -15,9 +15,9 @@ begin
   return result;
 exception
   when err_e then
-    raise_application_error(-20002, ${1}||': dbg='||dbg||' '||err);
+    raise_application_error(-20002, '${1}: dbg='||dbg||' '||err);
   when others then
-    raise_application_error(-20001, ${1}||': dbg='||dbg||' '||sqlerrm(sqlcode));
+    raise_application_error(-20001, '${1}: dbg='||dbg||' '||sqlerrm(sqlcode));
 end ${1};
 
 ]]></content>
